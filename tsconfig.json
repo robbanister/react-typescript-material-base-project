@@ -12,7 +12,8 @@
 				"es7",
 				"dom",
 				"es5",
-				"webworker"
+				"webworker",
+				"dom"
 			] /* With --lib you can specify a list of built-in API declaration groups that you can chose to include in your project */,
       "types": [
         "react"
