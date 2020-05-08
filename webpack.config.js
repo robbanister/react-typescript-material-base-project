@@ -25,7 +25,7 @@ module.exports = {
             }
         ]
     },
-    resolve: { extensions: ["*", ".js", ".jsx", '.ts', '.tsx'] },
+    resolve: { extensions: [".js",'.ts','.tsx'] },
     // Defined bundled output location
     output: {
         path: path.resolve(__dirname, "dist/"),
