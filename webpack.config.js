@@ -1,29 +1,35 @@
 var path = require('path');
 
 module.exports = {
-
-    // define entry point
-    entry: path.resolve(__dirname, 'src') + '/app/index.js',
-    // define output point 
-    output: {
-        path: path.resolve(__dirname, 'dist') + '/app',
-        filename: 'bundle.js',
-        publicPath: '/app/'
-    },
+    // Defined entry point
+    entry: './src/index.tsx',
+    mode: "development",
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(t|j)sx?$/,
                 include: path.resolve(__dirname, 'src'),
-                loader: 'babel-loader',
-                query: {
-                    presets: ['@babel/preset-react', '@babel/preset-env', '@babel/preset-typescript']
+                exclude: /(node_modules|bower_components)/,
+                loader: 'awesome-typescript-loader',
+                options: {
+                    presets: ["@babel/preset-env", "@babel/preset-react"]
                 }
             },
             {
+                enforce: "pre",
+                test: /\.js$/,
+                loader: "source-map-loader" },
+            {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                use: ["style-loader", "css-loader"]
             }
         ]
-    }
+    },
+    resolve: { extensions: [".js",'.ts','.tsx'] },
+    // Defined bundled output location
+    output: {
+        path: path.resolve(__dirname, "dist/"),
+        publicPath: "/dist/",
+        filename: "bundle.js"
+    },
 };
